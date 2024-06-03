@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,19 +41,30 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.example.lab6.Navigation.NavApp
 
 class MainActivity2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MovieScreen2(Movie.getSampleMovies())
+            NavApp()
         }
     }
 }
 
+
 enum class ListType {
     ROW, COLUMN, GRID
+}
+
+@Composable
+fun bai1(){
+    val mainViewModel: MainViewModel = viewModel()
+    val moviesState =
+        mainViewModel.movies.observeAsState(initial = emptyList())
+    MovieScreen2(moviesState.value)
 }
 
 @Composable
