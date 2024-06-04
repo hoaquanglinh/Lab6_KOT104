@@ -48,7 +48,7 @@ fun MainScreen(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Sangldph42693_LAB7_KOT104", style = MaterialTheme.typography.titleMedium)
+        Text(text = "linhhqph43159_LAB7_KOT104", style = MaterialTheme.typography.titleMedium)
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
